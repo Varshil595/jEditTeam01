@@ -1,0 +1,155 @@
+Log file created on Mon Feb 19 00:07:58 CST 2024
+IMPORTANT:
+Because updating this file after every log message would kill
+performance, it will be *incomplete* unless you invoke the
+Utilities->Troubleshooting->Update Activity Log on Disk command!
+12:07:57 AM [main] [message] Log: When reporting bugs, please include the following information:
+12:07:57 AM [main] [message] Log: java.version=21.0.2
+12:07:57 AM [main] [message] Log: java.vm.version=21.0.2+13-58
+12:07:57 AM [main] [message] Log: java.vm.name=OpenJDK 64-Bit Server VM
+12:07:57 AM [main] [message] Log: java.runtime.version=21.0.2+13-58
+12:07:57 AM [main] [message] Log: java.runtime.name=OpenJDK Runtime Environment
+12:07:57 AM [main] [message] Log: java.vendor=Oracle Corporation
+12:07:57 AM [main] [message] Log: java.compiler=null
+12:07:57 AM [main] [message] Log: os.name=Mac OS X
+12:07:57 AM [main] [message] Log: os.version=13.4
+12:07:57 AM [main] [message] Log: os.arch=aarch64
+12:07:57 AM [main] [message] Log: user.home=/Users/varshilrajeshbhainarola
+12:07:57 AM [main] [message] Log: java.home=/Users/varshilrajeshbhainarola/Library/Java/JavaVirtualMachines/openjdk-21.0.2/Contents/Home
+12:07:57 AM [main] [message] Log: java.class.path=/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/classes/core:/Users/varshilrajeshbhainarola/Downloads/jsr305-3.0.2.jar
+12:07:57 AM [main] [message] jEdit: starting with command line arguments: -settings=/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings
+12:07:57 AM [main] [notice] jEdit: An error occurred while connecting to the jEdit server instance.
+12:07:57 AM [main] [notice] jEdit: This probably means that jEdit crashed and/or exited abnormally
+12:07:57 AM [main] [notice] jEdit: the last time it was run.
+12:07:57 AM [main] [notice] jEdit: If you don't know what this means, don't worry.
+12:07:57 AM [main] [notice] jEdit: java.net.ConnectException: Connection refused
+12:07:57 AM [main] [notice] jEdit:  at java.base/sun.nio.ch.Net.connect0(Native Method)
+12:07:57 AM [main] [notice] jEdit:  at java.base/sun.nio.ch.Net.connect(Net.java:589)
+12:07:57 AM [main] [notice] jEdit:  at java.base/sun.nio.ch.Net.connect(Net.java:578)
+12:07:57 AM [main] [notice] jEdit:  at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+12:07:57 AM [main] [notice] jEdit:  at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+12:07:57 AM [main] [notice] jEdit:  at java.base/java.net.Socket.connect(Socket.java:751)
+12:07:57 AM [main] [notice] jEdit:  at java.base/java.net.Socket.connect(Socket.java:686)
+12:07:57 AM [main] [notice] jEdit:  at java.base/java.net.Socket.<init>(Socket.java:555)
+12:07:57 AM [main] [notice] jEdit:  at java.base/java.net.Socket.<init>(Socket.java:356)
+12:07:57 AM [main] [notice] jEdit:  at org.gjt.sp.jedit.jEdit.main(jEdit.java:320)
+12:07:57 AM [main] [debug] jEdit: before splash screen activation:43 ms
+12:07:58 AM [main] [debug] jEdit: after splash screen activation:1682 ms
+12:07:58 AM [main] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings/activity.log" to "/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings/settings-backup/activity.log~1~"
+12:07:58 AM [main] [notice] jEdit: jEdit version 5.5.0
+12:07:58 AM [main] [message] jEdit: Settings directory is /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings
+12:07:58 AM [main] [message] jEdit: jEdit home directory is /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master
+12:07:58 AM [main] [debug] SplashScreen: init:10/1168ms
+12:07:58 AM [main] [debug] SplashScreen: init system properties:8/1176ms
+12:07:58 AM [main] [message] BeanShell: Beanshell Init
+12:07:58 AM [main] [debug] SplashScreen: init beanshell:14/1190ms
+12:07:58 AM [main] [debug] SplashScreen: loading site properties:1/1191ms
+12:07:58 AM [main] [debug] SplashScreen: loading user properties:1/1192ms
+12:07:58 AM [main] [debug] GUIUtilities: Icon theme set to: tango
+12:07:58 AM [main] [debug] GUIUtilities: Loading icon theme from: jeditresource:/org/gjt/sp/jedit/icons/themes/tango/
+12:07:58 AM [main] [debug] SplashScreen: init GUI:1/1193ms
+12:07:58 AM [main] [debug] EditServer: jEdit server started on port 64007
+12:07:58 AM [main] [debug] EditServer: Authorization key is 750220214
+12:07:58 AM [main] [debug] SplashScreen: init server:9/1202ms
+12:07:58 AM [main] [debug] jEdit: initPLAF non-edt old=com.apple.laf.AquaLookAndFeel requested=null new=com.apple.laf.AquaLookAndFeel
+12:07:58 AM [main] [debug] SplashScreen: init look and feel:2/1204ms
+12:07:58 AM [main] [debug] SplashScreen: init VFS Manager:0/1204ms
+12:07:58 AM [main] [debug] ActionSet: Loading actions from file:/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/classes/core/org/gjt/sp/jedit/actions.xml
+12:07:58 AM [main] [debug] DockableWindowManager: Loading dockables from file:/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/classes/core/org/gjt/sp/jedit/dockables.xml
+12:07:58 AM [main] [debug] SplashScreen: init resources:40/1244ms
+12:07:58 AM [AWT-EventQueue-0] [debug] EditBus: SearchSettingsChanged[source=null]
+12:07:58 AM [main] [debug] SplashScreen: Migrate keymaps:14/1258ms
+12:07:58 AM [main] [notice] jEdit: Loading plugins from /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/jars
+12:07:58 AM [main] [notice] jEdit: Loading plugins from /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings/jars
+12:07:58 AM [main] [debug] SplashScreen: init plugins:2/1260ms
+12:07:58 AM [main] [debug] SplashScreen: init history model:1/1261ms
+12:07:58 AM [main] [debug] SplashScreen: init buffer history:1/1262ms
+12:07:58 AM [main] [debug] SplashScreen: init killring:0/1262ms
+12:07:58 AM [main] [message] CheckFileStatus: Performing migration step: checkFileStatus
+12:07:58 AM [main] [debug] jEdit: initPLAF non-edt old=com.apple.laf.AquaLookAndFeel requested=null new=com.apple.laf.AquaLookAndFeel
+12:07:58 AM [main] [debug] jEdit: SOCKS proxy disabled
+12:07:58 AM [main] [debug] jEdit: HTTP proxy disabled
+12:07:58 AM [AWT-EventQueue-0] [debug] EditBus: PropertiesChanged[source=null]
+12:07:58 AM [main] [debug] SplashScreen: init various properties:36/1298ms
+12:07:58 AM [main] [message] jEdit: Loading mode catalog file /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/modes/catalog
+12:07:58 AM [main] [message] jEdit: Loading mode catalog file /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings/modes/catalog
+12:07:58 AM [main] [debug] SplashScreen: init modes:20/1318ms
+12:07:58 AM [main] [debug] SplashScreen: activate plugins:7/1325ms
+12:07:58 AM [main] [debug] Macros: Registered beanshell macro handler
+12:07:58 AM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=macros,source=null]
+12:07:58 AM [main] [debug] SplashScreen: init macros:5/1330ms
+12:07:58 AM [main] [message] BeanShell: Running script /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/startup/startup.bsh
+12:07:59 AM [main] [notice] jEdit$5: Loading edit mode /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/modes/text.xml
+12:07:59 AM [main] [debug] String: BeanShell interpreter version 2.0b4-jedit
+12:07:59 AM [main] [debug] SplashScreen: run startup scripts:67/1397ms
+12:07:59 AM [main] [debug] SplashScreen: run startup scripts:0/1397ms
+12:07:59 AM [main] [debug] SplashScreen: run startup scripts:1/1398ms
+12:07:59 AM [main] [debug] jEdit: main done:1938 ms
+12:07:59 AM [AWT-EventQueue-0] [message] PerspectiveManager: Loading /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings/perspective.xml
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=PROPERTIES_CHANGED,view=null,source=Untitled-1 (~/Downloads/JEdit-5.5.0-master/)]
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CREATED,view=null,source=Untitled-1 (~/Downloads/JEdit-5.5.0-master/)]
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOAD_STARTED,view=null,source=Untitled-1 (~/Downloads/JEdit-5.5.0-master/)]
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOADED,view=null,source=Untitled-1 (~/Downloads/JEdit-5.5.0-master/)]
+12:07:59 AM [AWT-EventQueue-0] [debug] BufferSet: 1604069187: addBufferSetListener org.gjt.sp.jedit.EditPane[inactive]
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: BufferChanging[what=BUFFER_CHANGING,source=org.gjt.sp.jedit.EditPane[inactive]]
+12:07:59 AM [AWT-EventQueue-0] [debug] BufferSet: 1604069187 addBufferAt(Untitled-1 (~/Downloads/JEdit-5.5.0-master/),-1)
+12:07:59 AM [AWT-EventQueue-0] [debug] BufferSet: 1604069187: Buffer added Untitled-1 (~/Downloads/JEdit-5.5.0-master/) at 0
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: EditPaneUpdate[what=CREATED,source=org.gjt.sp.jedit.EditPane[inactive]]
+12:07:59 AM [AWT-EventQueue-0] [debug] BufferSet: 1604069187 addBufferAt(Untitled-1 (~/Downloads/JEdit-5.5.0-master/),0)
+12:07:59 AM [AWT-EventQueue-0] [debug] BufferSet: 1604069187 addBufferAt(Untitled-1 (~/Downloads/JEdit-5.5.0-master/),1)
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: ViewUpdate[what=CREATED,source=org.gjt.sp.jedit.View[active]]
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader: java.io.FileNotFoundException: /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/doc/whatsnew/toc.xml (No such file or directory)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.open0(Native Method)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:84)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:180)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.net.URL.openStream(URL.java:1325)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCLoader.loadTOC(HelpTOCLoader.java:166)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCLoader.createTOC(HelpTOCLoader.java:117)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCPanel$2.run(HelpTOCPanel.java:105)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.util.TaskManager$MyTask._run(TaskManager.java:258)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.util.Task.run(Task.java:65)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.lang.Thread.run(Thread.java:1583)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader: java.io.FileNotFoundException: /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/doc/users-guide/toc.xml (No such file or directory)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.open0(Native Method)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:84)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:180)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.net.URL.openStream(URL.java:1325)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCLoader.loadTOC(HelpTOCLoader.java:166)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCLoader.createTOC(HelpTOCLoader.java:118)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCPanel$2.run(HelpTOCPanel.java:105)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.util.TaskManager$MyTask._run(TaskManager.java:258)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.util.Task.run(Task.java:65)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.lang.Thread.run(Thread.java:1583)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader: java.io.FileNotFoundException: /Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/doc/FAQ/toc.xml (No such file or directory)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.open0(Native Method)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:84)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:180)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.net.URL.openStream(URL.java:1325)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCLoader.loadTOC(HelpTOCLoader.java:166)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCLoader.createTOC(HelpTOCLoader.java:119)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.jedit.help.HelpTOCPanel$2.run(HelpTOCPanel.java:105)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.util.TaskManager$MyTask._run(TaskManager.java:258)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at org.gjt.sp.util.Task.run(Task.java:65)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+12:07:59 AM [jEdit Worker #0] [error] HelpTOCLoader:  at java.base/java.lang.Thread.run(Thread.java:1583)
+12:07:59 AM [jEdit Worker #0] [notice] HelpTOCLoader: The API docs for jEdit will not be available (reinstall jEdit if you want them)
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: EditorStarted[source=null]
+12:07:59 AM [AWT-EventQueue-0] [message] jEdit: Startup complete: 2203 ms
+12:07:59 AM [AWT-EventQueue-0] [debug] EditBus: ViewUpdate[what=VIEW_ACTIVATED,source=org.gjt.sp.jedit.View[active]]
+12:07:59 AM [AWT-EventQueue-0] [debug] jEdit: checkBufferStatus for all buffers
+12:07:59 AM [AWT-EventQueue-0] [debug] JEditTextArea: InputMethodSupport is activated
+12:08:28 AM [AWT-EventQueue-0] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings/perspective.xml" to "/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master/build/settings/settings-backup/perspective.xml~1~"
