@@ -336,14 +336,6 @@ public class StatusBar extends JPanel
 
 	//{{{ updateCaretStatus() method
 	/** Updates the status bar with information about the caret position, line number, etc */
-
-	// Helper method to count words in a string
-	private int countWords(String text) {
-		// Use a regular expression to split the string into words
-		String[] words = text.split("\\s+");
-		return words.length;
-	}
-
 	public void updateCaretStatus()
 	{
 		if (showCaretStatus)
@@ -386,9 +378,6 @@ public class StatusBar extends JPanel
 			seg.array = null;
 			seg.count = 0;
 
-			int totalWords = countWords(buffer.getText(0, bufferLength));
-			int wordOffset = countWords(buffer.getText(0, caretPosition));
-
 			if (jEdit.getBooleanProperty("view.status.show-caret-linenumber", true))
 			{
 				buf.append(currLine + 1);
@@ -429,14 +418,7 @@ public class StatusBar extends JPanel
 				buf.append(bufferLength);
 				buf.append(')');
 			}
-			if (jEdit.getBooleanProperty("view.status.show-word-offset", true) &&
-					jEdit.getBooleanProperty("view.status.show-total-words", true)) {
-				buf.append('(');
-				buf.append(wordOffset);
-				buf.append('/');
-				buf.append(totalWords);
-				buf.append(')');
-			}
+
 			caretStatus.setText(buf.toString());
 			buf.setLength(0);
 		}
