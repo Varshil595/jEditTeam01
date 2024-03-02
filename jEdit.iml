@@ -18,7 +18,7 @@
     <orderEntry type="library" scope="TEST" name="Test Dependencies" level="project" />
     <orderEntry type="library" name="Compile Dependencies" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Runtime Dependencies" level="project" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../jsr305-3.0.2.jar!/" />

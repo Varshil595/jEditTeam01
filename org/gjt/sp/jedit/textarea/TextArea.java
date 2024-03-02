@@ -152,6 +152,8 @@ public abstract class TextArea extends JPanel
 		focusedComponent = this;
 	} //}}}
 
+
+
 	//{{{ getFoldPainter() method
 	public FoldPainter getFoldPainter()
 	{
@@ -1586,6 +1588,20 @@ public abstract class TextArea extends JPanel
 		}
 
 		return null;
+	}
+
+	public boolean toggleScrollBar()
+	{
+		boolean scrollBarCurrentlyEnabled = jEdit.getBooleanProperty("view.gutter.scrollBar.enabled");
+		boolean newScrollBarState = !scrollBarCurrentlyEnabled;
+		if(vertical != null) {
+			vertical.setVisible(newScrollBarState);
+		}
+		if(horizontal != null) {
+			horizontal.setVisible(newScrollBarState);
+		}
+		jEdit.setBooleanProperty("view.gutter.scrollBar.enabled", newScrollBarState);
+		return newScrollBarState;
 	}
 
 	/**
@@ -3835,6 +3851,7 @@ loop:		for(int i = lineNo - 1; i >= 0; i--)
 			rectangularSelectionMode);
 		painter.repaint();
 	} //}}}
+
 
 	//}}}
 
