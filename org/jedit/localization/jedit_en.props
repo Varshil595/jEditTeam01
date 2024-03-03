@@ -272,6 +272,7 @@ toggle-buffer-switcher.label=Toggle $Buffer Switcher
 focus-buffer-switcher.label=Focus on Buffer S$witcher
 toggle-line-numbers.label=Toggle $Line Numbers
 toggle-statusbar.label=Toggle S$tatus Bar
+toggle-scrollbar.label=Toggle $Scroll Bars
 toggle-gutter.label=Toggle $Gutter
 show-context-menu.label=Show Context Menu
 set-view-title.label=Set view title...

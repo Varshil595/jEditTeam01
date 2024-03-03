@@ -378,6 +378,7 @@ view=new-view \
 	 toggle-line-numbers \
 	 print.toggle-show-page-breaks \
 	 toggle-statusbar \
+	 toggle-scrollbar \
 	 toggle-gutter \
 	 toggle-buffer-switcher \
 	 - \
