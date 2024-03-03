@@ -43,6 +43,7 @@ import javax.swing.plaf.LayerUI;
 import javax.swing.text.Segment;
 import javax.swing.text.TabExpander;
 
+import org.gjt.sp.jedit.*;
 import org.gjt.sp.jedit.Debug;
 import org.gjt.sp.jedit.IPropertyManager;
 import org.gjt.sp.jedit.JEditActionContext;
@@ -279,6 +280,20 @@ public abstract class TextArea extends JPanel
 	{
 		return gutter;
 	} //}}}
+
+	public boolean toggleScrollBar()
+	{
+		boolean scrollBarCurrentlyEnabled = jEdit.getBooleanProperty("view.gutter.scrollBar.enabled");
+		boolean newScrollBarState = !scrollBarCurrentlyEnabled;
+		if(vertical != null) {
+			vertical.setVisible(newScrollBarState);
+		}
+		if(horizontal != null) {
+			horizontal.setVisible(newScrollBarState);
+		}
+		jEdit.setBooleanProperty("view.gutter.scrollBar.enabled", newScrollBarState);
+		return newScrollBarState;
+	}
 
 	//{{{ getDisplayManager() method
 	/**
