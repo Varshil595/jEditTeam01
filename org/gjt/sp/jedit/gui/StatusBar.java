@@ -343,105 +343,97 @@ public class StatusBar extends JPanel
 		String[] words = text.split("\\s+");
 		return words.length;
 	}
-	
-	public void updateCaretStatus()
-	{
-		if (showCaretStatus)
-		{
-			Buffer buffer = view.getBuffer();
 
-			if(!buffer.isLoaded() ||
-				/* can happen when switching buffers sometimes */
-				buffer != view.getTextArea().getBuffer())
-			{
-				caretStatus.setText(" ");
-				return;
-			}
-
-			JEditTextArea textArea = view.getTextArea();
-
-			int caretPosition = textArea.getCaretPosition();
-			int currLine = textArea.getCaretLine();
-
-			// there must be a better way of fixing this...
-			// the problem is that this method can sometimes
-			// be called as a result of a text area scroll
-			// event, in which case the caret position has
-			// not been updated yet.
-			if(currLine >= buffer.getLineCount())
-				return; // hopefully another caret update will come?
-
-			int start = textArea.getLineStartOffset(currLine);
-			int dot = caretPosition - start;
-
-			if(dot < 0)
-				return;
-
-			int bufferLength = buffer.getLength();
-
-			buffer.getText(start,dot,seg);
-			int virtualPosition = StandardUtilities.getVirtualWidth(seg,
-				buffer.getTabSize());
-			// for GC
-			seg.array = null;
-			seg.count = 0;
-			int totalWords = countWords(buffer.getText(0, bufferLength));
-			int wordOffset = countWords(buffer.getText(0, caretPosition));
-			
-			if (jEdit.getBooleanProperty("view.status.show-caret-linenumber", true))
-			{
-				buf.append(currLine + 1);
-				buf.append(',');
-			}
-			if (jEdit.getBooleanProperty("view.status.show-caret-dot", true))
-			{
-				buf.append(dot + 1);
-			}
-			if (jEdit.getBooleanProperty("view.status.show-caret-virtual", true) &&
-				virtualPosition != dot)
-			{
-				buf.append('-');
-				buf.append(virtualPosition + 1);
-			}
-			if (buf.length() > 0)
-			{
-				buf.append(' ');
-			}
-			if (jEdit.getBooleanProperty("view.status.show-caret-offset", true) &&
-				jEdit.getBooleanProperty("view.status.show-caret-bufferlength", true))
-			{
-				buf.append('(');
-				buf.append(caretPosition);
-				buf.append('/');
-				buf.append(bufferLength);
-				buf.append(')');
-			}
-			else if (jEdit.getBooleanProperty("view.status.show-caret-offset", true))
-			{
-				buf.append('(');
-				buf.append(caretPosition);
-				buf.append(')');
-			}
-			else if (jEdit.getBooleanProperty("view.status.show-caret-bufferlength", true))
-			{
-				buf.append('(');
-				buf.append(bufferLength);
-				buf.append(')');
-			}
-			
-			if (jEdit.getBooleanProperty("view.status.show-word-offset", true) &&
-					jEdit.getBooleanProperty("view.status.show-total-words", true)) {
-				buf.append('(');
-				buf.append(wordOffset);
-				buf.append('/');
-				buf.append(totalWords);
-				buf.append(')');
-			}
-			
-			caretStatus.setText(buf.toString());
-			buf.setLength(0);
+	public void updateCaretStatus() {
+		if (!showCaretStatus) {
+			return;
 		}
-	} //}}}
+
+		Buffer buffer = view.getBuffer();
+		if (!isValidBuffer(buffer)) {
+			caretStatus.setText(" ");
+			return;
+		}
+
+		JEditTextArea textArea = view.getTextArea();
+		int caretPosition = textArea.getCaretPosition();
+		int currLine = textArea.getCaretLine();
+
+		if (!isValidCurrLine(currLine, buffer)) {
+			return;
+		}
+
+		int start = textArea.getLineStartOffset(currLine);
+		int dot = caretPosition - start;
+
+		if (dot < 0) {
+			return;
+		}
+
+		int bufferLength = buffer.getLength();
+		updateCaretStatusText(currLine, dot, buffer, bufferLength, caretPosition);
+	}
+
+	private boolean isValidBuffer(Buffer buffer) {
+		return buffer != null && buffer.isLoaded() && buffer == view.getTextArea().getBuffer();
+	}
+
+	private boolean isValidCurrLine(int currLine, Buffer buffer) {
+		return currLine >= 0 && currLine < buffer.getLineCount();
+	}
+
+	private void updateCaretStatusText(int currLine, int dot, Buffer buffer, int bufferLength, int caretPosition) {
+		StringBuilder buf = new StringBuilder();
+
+		if (jEdit.getBooleanProperty("view.status.show-caret-linenumber", true)) {
+			buf.append(currLine + 1).append(',');
+		}
+		if (jEdit.getBooleanProperty("view.status.show-caret-dot", true)) {
+			buf.append(dot + 1);
+		}
+
+		int virtualPosition = getVirtualPosition(dot, buffer);
+		if (jEdit.getBooleanProperty("view.status.show-caret-virtual", true) && virtualPosition != dot) {
+			buf.append('-').append(virtualPosition + 1);
+		}
+
+		appendOffsetAndBufferLength(buf, caretPosition, bufferLength);
+
+		caretStatus.setText(buf.toString());
+	}
+
+	private int getVirtualPosition(int dot, Buffer buffer) {
+		Segment seg = new Segment();
+		buffer.getText(buffer.getLineStartOffset(buffer.getLineOfOffset(dot)), dot, seg);
+		int virtualPosition = StandardUtilities.getVirtualWidth(seg, buffer.getTabSize());
+		seg.array = null; // for GC
+		seg.count = 0;
+		return virtualPosition;
+	}
+
+	private void appendOffsetAndBufferLength(StringBuilder buf, int caretPosition, int bufferLength) {
+		if (buf.length() > 0) {
+			buf.append(' ');
+		}
+
+		boolean showOffset = jEdit.getBooleanProperty("view.status.show-caret-offset", true);
+		boolean showBufferLength = jEdit.getBooleanProperty("view.status.show-caret-bufferlength", true);
+
+		if (showOffset || showBufferLength) {
+			buf.append('(');
+			if (showOffset) {
+				buf.append(caretPosition);
+				if (showBufferLength) {
+					buf.append('/');
+				}
+			}
+			if (showBufferLength) {
+				buf.append(bufferLength);
+			}
+			buf.append(')');
+		}
+	}
+	//}}}
 
 	//{{{ updateBufferStatus() method
 	public void updateBufferStatus()
