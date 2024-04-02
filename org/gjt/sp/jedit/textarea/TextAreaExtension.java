@@ -24,20 +24,6 @@ package org.gjt.sp.jedit.textarea;
 
 import java.awt.Graphics2D;
 
-/**
- * Subclasses of this class can perform custom painting and tool tip
- * handling in the text area and gutter.
- *
- * @see TextAreaPainter#addExtension(TextAreaExtension)
- * @see TextAreaPainter#removeExtension(TextAreaExtension)
- * @see Gutter#addExtension(TextAreaExtension)
- * @see Gutter#removeExtension(TextAreaExtension)
- *
- * @since jEdit 4.0pre4
- *
- * @author Slava Pestov
- * @version $Id$
- */
 public abstract class TextAreaExtension
 {
 	//{{{ paintScreenLineRange() method
@@ -74,6 +60,7 @@ public abstract class TextAreaExtension
 			y += lineHeight;
 		}
 	} //}}}
+
 
 	//{{{ paintValidLine() method
 	/**

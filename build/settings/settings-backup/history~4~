@@ -6,9 +6,8 @@
 [action]
 save
 insert-newline-indent
-new-file
-next-line
 backspace
+new-file
 vertical-paste
 [clipboard]
 toc.xml

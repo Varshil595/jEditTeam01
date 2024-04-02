@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" ?>
 <!DOCTYPE KILLRING SYSTEM "killring.dtd">
 <KILLRING>
-<ENTRY>toc.xml</ENTRY>
 <ENTRY>\c</ENTRY>
+<ENTRY>toc.xml</ENTRY>
 </KILLRING>

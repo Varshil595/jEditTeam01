@@ -373,6 +373,9 @@ view.gutter.AstructClick=narrow-struct
 # Show gutter?
 view.gutter.enabled=true
 
+#show scrollBar?
+view.gutter.scrollBar.enabled=true
+
 # Gutter minimal number of digits to reserve for line numbers
 view.gutter.minDigitCount=2
 

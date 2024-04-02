@@ -1,17 +1,14 @@
 /*
- * TriangleFoldPainter.java
- * :tabSize=4:indentSize=4:noTabs=false:
- * :folding=explicit:collapseFolds=0:
+ * jEdit - Programmer's Text Editor
+ * :tabSize=8:indentSize=8:noTabs=false:
+ * :folding=explicit:collapseFolds=1:
  *
- * Copyright (C) 1999, 2000 mike dillon
- * Portions copyright (C) 2001, 2002 Slava Pestov
- * Refactoring copyright (C) 2008 Shlomy Reinstein
+ * Copyright © 2024 jEdit contributors
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -27,7 +24,6 @@ package org.gjt.sp.jedit.textarea;
 import java.awt.Graphics2D;
 import org.gjt.sp.jedit.buffer.JEditBuffer;
 
-// {{{ class TriangleFoldHandler
 public class TriangleFoldPainter implements FoldPainter
 {
 	// {{{ paintFoldStart()

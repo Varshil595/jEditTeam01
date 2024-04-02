@@ -28,6 +28,7 @@ import org.gjt.sp.util.Log;
 /**
  * Maintains the vertical scrollbar.
  */
+
 class ScrollLineCount extends Anchor
 {
 
@@ -66,7 +67,7 @@ class ScrollLineCount extends Anchor
 	{
 		preContentInsertedScrollLines = 0;
 		int physicalLine = startLine;
-		
+
 		if(!getDisplayManager().isLineVisible(physicalLine))
 			physicalLine = getDisplayManager().getNextVisibleLine(physicalLine);
 
@@ -126,7 +127,7 @@ class ScrollLineCount extends Anchor
 	@Override
 	void contentRemoved(int startLine, int startOffset, int numLines)
 	{
-		int scrollLines = 0; 
+		int scrollLines = 0;
 		int physicalLine = startLine;
 		if(!getDisplayManager().isLineVisible(physicalLine))
 			physicalLine = getDisplayManager().getNextVisibleLine(physicalLine);

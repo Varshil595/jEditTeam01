@@ -1,0 +1,172 @@
+Log file created on Mon Apr 01 19:27:48 CDT 2024
+IMPORTANT:
+Because updating this file after every log message would kill
+performance, it will be *incomplete* unless you invoke the
+Utilities->Troubleshooting->Update Activity Log on Disk command!
+7:27:46 PM [main] [message] Log: When reporting bugs, please include the following information:
+7:27:46 PM [main] [message] Log: java.version=21.0.2
+7:27:46 PM [main] [message] Log: java.vm.version=21.0.2+13-58
+7:27:46 PM [main] [message] Log: java.vm.name=OpenJDK 64-Bit Server VM
+7:27:46 PM [main] [message] Log: java.runtime.version=21.0.2+13-58
+7:27:46 PM [main] [message] Log: java.runtime.name=OpenJDK Runtime Environment
+7:27:46 PM [main] [message] Log: java.vendor=Oracle Corporation
+7:27:46 PM [main] [message] Log: java.compiler=null
+7:27:46 PM [main] [message] Log: os.name=Mac OS X
+7:27:46 PM [main] [message] Log: os.version=13.4
+7:27:46 PM [main] [message] Log: os.arch=aarch64
+7:27:46 PM [main] [message] Log: user.home=/Users/varshilrajeshbhainarola
+7:27:46 PM [main] [message] Log: java.home=/Users/varshilrajeshbhainarola/Library/Java/JavaVirtualMachines/openjdk-21.0.2/Contents/Home
+7:27:46 PM [main] [message] Log: java.class.path=/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/classes/core:/Users/varshilrajeshbhainarola/Downloads/jsr305-3.0.2.jar
+7:27:46 PM [main] [message] jEdit: starting with command line arguments: -settings=/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings
+7:27:46 PM [main] [notice] jEdit: An error occurred while connecting to the jEdit server instance.
+7:27:46 PM [main] [notice] jEdit: This probably means that jEdit crashed and/or exited abnormally
+7:27:46 PM [main] [notice] jEdit: the last time it was run.
+7:27:46 PM [main] [notice] jEdit: If you don't know what this means, don't worry.
+7:27:46 PM [main] [notice] jEdit: java.net.ConnectException: Connection refused
+7:27:46 PM [main] [notice] jEdit:  at java.base/sun.nio.ch.Net.connect0(Native Method)
+7:27:46 PM [main] [notice] jEdit:  at java.base/sun.nio.ch.Net.connect(Net.java:589)
+7:27:46 PM [main] [notice] jEdit:  at java.base/sun.nio.ch.Net.connect(Net.java:578)
+7:27:46 PM [main] [notice] jEdit:  at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+7:27:46 PM [main] [notice] jEdit:  at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+7:27:46 PM [main] [notice] jEdit:  at java.base/java.net.Socket.connect(Socket.java:751)
+7:27:46 PM [main] [notice] jEdit:  at java.base/java.net.Socket.connect(Socket.java:686)
+7:27:46 PM [main] [notice] jEdit:  at java.base/java.net.Socket.<init>(Socket.java:555)
+7:27:46 PM [main] [notice] jEdit:  at java.base/java.net.Socket.<init>(Socket.java:356)
+7:27:46 PM [main] [notice] jEdit:  at org.gjt.sp.jedit.jEdit.main(jEdit.java:320)
+7:27:46 PM [main] [debug] jEdit: before splash screen activation:110 ms
+7:27:48 PM [main] [debug] jEdit: after splash screen activation:2217 ms
+7:27:48 PM [main] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/activity.log" to "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/settings-backup/activity.log~1~"
+7:27:48 PM [main] [notice] jEdit: jEdit version 5.5.0
+7:27:48 PM [main] [message] jEdit: Settings directory is /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings
+7:27:48 PM [main] [message] jEdit: jEdit home directory is /Users/varshilrajeshbhainarola/Downloads/jEditTeam01
+7:27:48 PM [main] [debug] SplashScreen: init:15/1664ms
+7:27:48 PM [main] [debug] SplashScreen: init system properties:17/1681ms
+7:27:48 PM [main] [message] BeanShell: Beanshell Init
+7:27:48 PM [main] [debug] SplashScreen: init beanshell:29/1710ms
+7:27:48 PM [main] [debug] SplashScreen: loading site properties:1/1711ms
+7:27:48 PM [main] [debug] SplashScreen: loading user properties:11/1722ms
+7:27:48 PM [main] [debug] GUIUtilities: Icon theme set to: tango
+7:27:48 PM [main] [debug] GUIUtilities: Loading icon theme from: jeditresource:/org/gjt/sp/jedit/icons/themes/tango/
+7:27:48 PM [main] [debug] SplashScreen: init GUI:2/1724ms
+7:27:48 PM [main] [debug] EditServer: jEdit server started on port 55370
+7:27:48 PM [main] [debug] EditServer: Authorization key is 1235406911
+7:27:48 PM [main] [debug] SplashScreen: init server:12/1736ms
+7:27:48 PM [main] [debug] jEdit: initPLAF non-edt old=com.apple.laf.AquaLookAndFeel requested=null new=com.apple.laf.AquaLookAndFeel
+7:27:48 PM [main] [debug] SplashScreen: init look and feel:4/1740ms
+7:27:48 PM [main] [debug] SplashScreen: init VFS Manager:0/1740ms
+7:27:48 PM [main] [debug] ActionSet: Loading actions from file:/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/classes/core/org/gjt/sp/jedit/actions.xml
+7:27:48 PM [main] [debug] DockableWindowManager: Loading dockables from file:/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/classes/core/org/gjt/sp/jedit/dockables.xml
+7:27:48 PM [main] [debug] SplashScreen: init resources:58/1798ms
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: SearchSettingsChanged[source=null]
+7:27:48 PM [main] [debug] SplashScreen: Migrate keymaps:20/1818ms
+7:27:48 PM [main] [notice] jEdit: Loading plugins from /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/jars
+7:27:48 PM [main] [notice] jEdit: Loading plugins from /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/jars
+7:27:48 PM [main] [debug] SplashScreen: init plugins:6/1824ms
+7:27:48 PM [main] [message] HistoryModel: Loading history
+7:27:48 PM [main] [debug] SplashScreen: init history model:2/1826ms
+7:27:48 PM [main] [message] BufferHistory: Loading /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/recent.xml
+7:27:48 PM [main] [debug] SplashScreen: init buffer history:4/1830ms
+7:27:48 PM [main] [message] KillRing: Loading /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/killring.xml
+7:27:48 PM [main] [debug] SplashScreen: init killring:12/1842ms
+7:27:48 PM [main] [debug] jEdit: initPLAF non-edt old=com.apple.laf.AquaLookAndFeel requested=null new=com.apple.laf.AquaLookAndFeel
+7:27:48 PM [main] [debug] jEdit: SOCKS proxy disabled
+7:27:48 PM [main] [debug] jEdit: HTTP proxy disabled
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: PropertiesChanged[source=null]
+7:27:48 PM [main] [debug] SplashScreen: init various properties:49/1891ms
+7:27:48 PM [main] [message] jEdit: Loading mode catalog file /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/modes/catalog
+7:27:48 PM [main] [message] jEdit: Loading mode catalog file /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/modes/catalog
+7:27:48 PM [main] [debug] SplashScreen: init modes:26/1917ms
+7:27:48 PM [main] [debug] SplashScreen: activate plugins:6/1923ms
+7:27:48 PM [main] [debug] Macros: Registered beanshell macro handler
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=macros,source=null]
+7:27:48 PM [main] [debug] SplashScreen: init macros:9/1932ms
+7:27:48 PM [main] [message] BeanShell: Running script /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/startup/startup.bsh
+7:27:48 PM [main] [notice] jEdit$5: Loading edit mode /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/modes/text.xml
+7:27:48 PM [main] [debug] String: BeanShell interpreter version 2.0b4-jedit
+7:27:48 PM [main] [debug] SplashScreen: run startup scripts:74/2006ms
+7:27:48 PM [main] [debug] SplashScreen: run startup scripts:0/2006ms
+7:27:48 PM [main] [debug] SplashScreen: run startup scripts:1/2007ms
+7:27:48 PM [main] [debug] jEdit: main done:2616 ms
+7:27:48 PM [AWT-EventQueue-0] [message] PerspectiveManager: Loading /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/perspective.xml
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=PROPERTIES_CHANGED,view=null,source=abc (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CREATED,view=null,source=abc (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOAD_STARTED,view=null,source=abc (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOADED,view=null,source=abc (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=PROPERTIES_CHANGED,view=null,source=kit (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CREATED,view=null,source=kit (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOAD_STARTED,view=null,source=kit (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOADED,view=null,source=kit (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=PROPERTIES_CHANGED,view=null,source=knkknknbcmk (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CREATED,view=null,source=knkknknbcmk (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOAD_STARTED,view=null,source=knkknknbcmk (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOADED,view=null,source=knkknknbcmk (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=PROPERTIES_CHANGED,view=null,source=kolpscde (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CREATED,view=null,source=kolpscde (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOAD_STARTED,view=null,source=kolpscde (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOADED,view=null,source=kolpscde (~/Downloads/)]
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: addBufferSetListener org.gjt.sp.jedit.EditPane[inactive]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: BufferChanging[what=BUFFER_CHANGING,source=org.gjt.sp.jedit.EditPane[inactive]]
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588 addBufferAt(kolpscde (~/Downloads/),-1)
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer added kolpscde (~/Downloads/) at 0
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: EditPaneUpdate[what=CREATED,source=org.gjt.sp.jedit.EditPane[inactive]]
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588 addBufferAt(kolpscde (~/Downloads/),0)
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588 addBufferAt(abc (~/Downloads/),1)
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer added abc (~/Downloads/) at 0
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588 addBufferAt(kit (~/Downloads/),2)
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer added kit (~/Downloads/) at 1
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588 addBufferAt(knkknknbcmk (~/Downloads/),3)
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer added knkknknbcmk (~/Downloads/) at 2
+7:27:48 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588 addBufferAt(kolpscde (~/Downloads/),4)
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: ViewUpdate[what=CREATED,source=org.gjt.sp.jedit.View[active]]
+7:27:48 PM [AWT-EventQueue-0] [debug] EditBus: EditorStarted[source=null]
+7:27:49 PM [AWT-EventQueue-0] [message] jEdit: Startup complete: 2991 ms
+7:27:49 PM [AWT-EventQueue-0] [debug] EditBus: ViewUpdate[what=VIEW_ACTIVATED,source=org.gjt.sp.jedit.View[active]]
+7:27:49 PM [AWT-EventQueue-0] [debug] jEdit: checkBufferStatus for all buffers
+7:27:49 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:27:49 PM [AWT-EventQueue-0] [debug] JEditTextArea: InputMethodSupport is activated
+7:28:18 PM [AWT-EventQueue-0] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/perspective.xml" to "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/settings-backup/perspective.xml~1~"
+7:29:11 PM [AWT-EventQueue-0] [debug] EditBus: ViewUpdate[what=VIEW_ACTIVATED,source=org.gjt.sp.jedit.View[active]]
+7:29:11 PM [AWT-EventQueue-0] [debug] jEdit: checkBufferStatus for all buffers
+7:29:11 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:29:17 PM [AWT-EventQueue-0] [debug] EditBus: ViewUpdate[what=VIEW_ACTIVATED,source=org.gjt.sp.jedit.View[active]]
+7:29:17 PM [AWT-EventQueue-0] [debug] jEdit: checkBufferStatus for all buffers
+7:29:17 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: EditorExitRequested[source=org.gjt.sp.jedit.View[active]]
+7:29:18 PM [AWT-EventQueue-0] [message] PerspectiveManager: Saving /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/perspective.xml
+7:29:18 PM [AWT-EventQueue-0] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/perspective.xml" to "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/settings-backup/perspective.xml~1~"
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSING,view=org.gjt.sp.jedit.View[active],source=abc (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer removed abc (~/Downloads/)
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSED,view=org.gjt.sp.jedit.View[active],source=abc (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSING,view=org.gjt.sp.jedit.View[active],source=kit (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer removed kit (~/Downloads/)
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSED,view=org.gjt.sp.jedit.View[active],source=kit (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSING,view=org.gjt.sp.jedit.View[active],source=knkknknbcmk (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer removed knkknknbcmk (~/Downloads/)
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSED,view=org.gjt.sp.jedit.View[active],source=knkknknbcmk (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: DynamicMenuChanged[menu=recent-files,source=null]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSING,view=org.gjt.sp.jedit.View[active],source=kolpscde (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer removed kolpscde (~/Downloads/)
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=PROPERTIES_CHANGED,view=null,source=Untitled-1 (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CREATED,view=null,source=Untitled-1 (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOAD_STARTED,view=null,source=Untitled-1 (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=LOADED,view=null,source=Untitled-1 (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588 addBufferAt(Untitled-1 (~/Downloads/),-1)
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer added Untitled-1 (~/Downloads/) at 0
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferChanging[what=BUFFER_CHANGING,source=org.gjt.sp.jedit.EditPane[active]]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: EditPaneUpdate[what=BUFFER_CHANGED,source=org.gjt.sp.jedit.EditPane[active]]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSED,view=org.gjt.sp.jedit.View[active],source=kolpscde (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: ViewUpdate[what=CLOSED,source=org.gjt.sp.jedit.View[active]]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: EditPaneUpdate[what=DESTROYED,source=org.gjt.sp.jedit.EditPane[active]]
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSet: 47635588: Buffer removed Untitled-1 (~/Downloads/)
+7:29:18 PM [AWT-EventQueue-0] [debug] BufferSetManager: Buffer:Untitled-1 (~/Downloads/) is in no bufferSet anymore, closing it
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSING,view=null,source=Untitled-1 (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [debug] EditBus: BufferUpdate[what=CLOSED,view=null,source=Untitled-1 (~/Downloads/)]
+7:29:18 PM [AWT-EventQueue-0] [message] BufferHistory: Saving /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/recent.xml
+7:29:18 PM [AWT-EventQueue-0] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/recent.xml" to "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/settings-backup/recent.xml~1~"
+7:29:18 PM [AWT-EventQueue-0] [message] KillRing: Saving /Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/killring.xml
+7:29:18 PM [AWT-EventQueue-0] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/killring.xml" to "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/settings-backup/killring.xml~1~"
+7:29:18 PM [AWT-EventQueue-0] [debug] MiscUtilities: Saving backup of file "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/properties" to "/Users/varshilrajeshbhainarola/Downloads/jEditTeam01/build/settings/settings-backup/properties~1~"

@@ -7,7 +7,6 @@
 save
 insert-newline-indent
 new-file
-next-line
 backspace
 vertical-paste
 [clipboard]

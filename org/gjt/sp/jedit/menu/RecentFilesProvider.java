@@ -22,11 +22,9 @@
 
 package org.gjt.sp.jedit.menu;
 
-//{{{ Imports
 import org.gjt.sp.jedit.*;
 import org.gjt.sp.jedit.browser.FileCellRenderer;
 import org.gjt.sp.util.Log;
-import org.gjt.sp.util.StandardUtilities;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -41,152 +39,117 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
-//}}}
 
-public class RecentFilesProvider implements DynamicMenuProvider
-{
-	//{{{ updateEveryTime() method
-	public boolean updateEveryTime()
-	{
+public class RecentFilesProvider implements DynamicMenuProvider {
+
+	private static final int MAX_ITEMS = jEdit.getIntegerProperty("menu.spillover", 20);
+
+	@Override
+	public boolean updateEveryTime() {
 		return false;
-	} //}}}
+	}
 
-	//{{{ update() method
-	public void update(JMenu menu)
-	{
+	@Override
+	public void update(JMenu menu) {
 		final View view = GUIUtilities.getView(menu);
-
-		//{{{ ActionListener...
-		ActionListener actionListener = new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				jEdit.openFile(view,evt.getActionCommand());
-				view.getStatus().setMessage(null);
-			}
-		}; //}}}
-
-		//{{{ ChangeListener...
-		ChangeListener changeListener = new ChangeListener()
-		{
-			public void stateChanged(ChangeEvent e)
-			{
-				JMenuItem menuItem = (JMenuItem) e.getSource();
-				
-				view.getStatus().setMessage(menuItem.isArmed()?menuItem.getActionCommand():null);
-			} 
-		}; //}}}
 
 		List<BufferHistory.Entry> recentVector = BufferHistory.getHistory();
 
-		if(recentVector.isEmpty())
-		{
-			JMenuItem menuItem = new JMenuItem(
-				jEdit.getProperty("no-recent-files.label"));
+		if (recentVector.isEmpty()) {
+			JMenuItem menuItem = new JMenuItem(jEdit.getProperty("no-recent-files.label"));
 			menuItem.setEnabled(false);
 			menu.add(menuItem);
 			return;
 		}
 
-		final List<JMenuItem> menuItems = new ArrayList<JMenuItem>();
+		final List<JMenuItem> menuItems = new ArrayList<>();
 		final JTextField text = new JTextField();
 		text.setToolTipText(jEdit.getProperty("recent-files.textfield.tooltip") +
-			": " + jEdit.getProperty("glob.tooltip"));
+				": " + jEdit.getProperty("glob.tooltip"));
 		menu.add(text);
-		text.addKeyListener(new KeyAdapter()
-		{
-			public void keyReleased(KeyEvent e)
-			{
-				String typedText = text.getText();
-				boolean filter = (typedText.length() > 0);
-				Pattern pattern = null;
-				if (filter)
-				{
-					String regex = ".*" + Pattern.quote(typedText) + ".*";
-					pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
-				}
-				try
-				{
-					for (JMenuItem recent : menuItems)
-					{
-						if (filter) {
-							// Enable the menu item if the pattern is found anywhere in the text
-							recent.setEnabled(pattern.matcher(recent.getText()).find());
-						} else {
-							// If no filter is set, enable all menu items
-							recent.setEnabled(true);
-						}
-					}
-				}
-				catch(PatternSyntaxException re)
-				{
-				  Log.log(Log.ERROR,this,re.getMessage());
-				}
-			}
-		});
+		text.addKeyListener(new RecentFilesKeyAdapter(text, menuItems));
 
-		boolean sort = jEdit.getBooleanProperty("sortRecent");
-
-		int maxItems = jEdit.getIntegerProperty("menu.spillover",20);
-
+		// Initialize the iterator here
 		Iterator<BufferHistory.Entry> iter = recentVector.iterator();
-		while(iter.hasNext())
-		{
+
+		while (iter.hasNext()) {
 			String path = iter.next().path;
-			if (jEdit.getBooleanProperty("hideOpen") && jEdit.getBuffer(path) != null)
+			if (jEdit.getBooleanProperty("hideOpen") && jEdit.getBuffer(path) != null) {
 				continue;
-			JMenuItem menuItem = new JMenuItem(MiscUtilities
-				.getFileName(path));
-			menuItem.setToolTipText(path);
-			menuItem.setActionCommand(path);
-			menuItem.addActionListener(actionListener);
-//			menuItem.addMouseListener(mouseListener);
-			menuItem.addChangeListener(changeListener);
-			
-			menuItem.setIcon(FileCellRenderer.fileIcon);
-
+			}
+			JMenuItem menuItem = createMenuItem(
+					MiscUtilities.getFileName(path),
+					path,
+					path,
+					createActionListener(view),
+					createChangeListener(view)
+			);
 			menuItems.add(menuItem);
-			if (!sort)
-			{
-				if (menu.getMenuComponentCount() >= maxItems
-				    && iter.hasNext())
-				{
-					JMenu newMenu = new JMenu(
-							jEdit.getProperty("common.more"));
-					menu.add(newMenu);
-					menu = newMenu;
-				}
-
-				menu.add(menuItem);
+			if (menu.getMenuComponentCount() >= MAX_ITEMS && iter.hasNext()) {
+				JMenu newMenu = new JMenu(jEdit.getProperty("common.more"));
+				menu.add(newMenu);
+				menu = newMenu;
 			}
+			menu.add(menuItem);
 		}
 
-		if(sort)
-		{
-			Collections.sort(menuItems, new MenuItemTextComparator());
-			for(int i = 0; i < menuItems.size(); i++)
-			{
-				if(menu.getMenuComponentCount() >= maxItems
-					&& i != 0)
-				{
-					JMenu newMenu = new JMenu(
-						jEdit.getProperty("common.more"));
-					menu.add(newMenu);
-					menu = newMenu;
-				}
-
-				menu.add(menuItems.get(i));
-			}
-		}
-		JMenuItem menuItem = new JMenuItem(jEdit.getProperty("clear-recent-files.label"));
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				BufferHistory.clear();
-			}
-		});
+		JMenuItem clearMenuItem = new JMenuItem(jEdit.getProperty("clear-recent-files.label"));
+		clearMenuItem.addActionListener(e -> BufferHistory.clear());
 		menu.addSeparator();
-		menu.add(menuItem);
-	} //}}}
+		menu.add(clearMenuItem);
+	}
+
+
+	private JMenuItem createMenuItem(String text, String tooltip, String actionCommand, ActionListener actionListener, ChangeListener changeListener) {
+		JMenuItem menuItem = new JMenuItem(text);
+		menuItem.setToolTipText(tooltip);
+		menuItem.setActionCommand(actionCommand);
+		menuItem.addActionListener(actionListener);
+		menuItem.addChangeListener(changeListener);
+		menuItem.setIcon(FileCellRenderer.fileIcon);
+		return menuItem;
+	}
+
+	private ActionListener createActionListener(View view) {
+		return evt -> {
+			jEdit.openFile(view, evt.getActionCommand());
+			view.getStatus().setMessage(null);
+		};
+	}
+
+	private ChangeListener createChangeListener(View view) {
+		return e -> {
+			JMenuItem menuItem = (JMenuItem) e.getSource();
+			view.getStatus().setMessage(menuItem.isArmed() ? menuItem.getActionCommand() : null);
+		};
+	}
+
+	private class RecentFilesKeyAdapter extends KeyAdapter {
+		private final JTextField text;
+		private final List<JMenuItem> menuItems;
+
+		public RecentFilesKeyAdapter(JTextField text, List<JMenuItem> menuItems) {
+			this.text = text;
+			this.menuItems = menuItems;
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			String typedText = text.getText();
+			boolean filter = (typedText.length() > 0);
+			Pattern pattern = null;
+			if (filter) {
+				String regex = ".*" + Pattern.quote(typedText) + ".*";
+				pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+			}
+			try {
+				for (JMenuItem recent : menuItems) {
+					recent.setEnabled(!filter || pattern.matcher(recent.getText()).find());
+				}
+			} catch (PatternSyntaxException ex) {
+				Log.log(Log.ERROR, this, ex.getMessage());
+			}
+		}
+	}
 }
+

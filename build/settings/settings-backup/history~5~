@@ -1,0 +1,12 @@
+[vfs.browser.filter]
+*\[^~#\]
+[action]
+save
+insert-newline-indent
+backspace
+vertical-paste
+[vfs.browser.path]
+/Users/varshilrajeshbhainarola/Downloads
+/Users/varshilrajeshbhainarola/Downloads/JEdit-5.5.0-master
+[clipboard]
+toc.xml
