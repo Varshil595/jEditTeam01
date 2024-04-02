@@ -58,491 +58,484 @@ import org.gjt.sp.util.*;
  */
 public class StatusBar extends JPanel
 {
-	//{{{ StatusBar constructor
-	public StatusBar(View view)
-	{
-		super(new BorderLayout());
-		setName("StatusBar");
-		setBorder(new CompoundBorder(new EmptyBorder(4,0,0,
-			(OperatingSystem.isMacOS() ? 18 : 0)),
-			UIManager.getBorder("TextField.border")));
+    //{{{ StatusBar constructor
+    public StatusBar(View view)
+    {
+        super(new BorderLayout());
+        setName("StatusBar");
+        setBorder(new CompoundBorder(new EmptyBorder(4,0,0,
+                (OperatingSystem.isMacOS() ? 18 : 0)),
+                UIManager.getBorder("TextField.border")));
 
-		this.view = view;
+        this.view = view;
 
-		panel = new JPanel(new BorderLayout());
-		box = new Box(BoxLayout.X_AXIS);
-		panel.add(BorderLayout.EAST,box);
-		add(BorderLayout.CENTER,panel);
+        panel = new JPanel(new BorderLayout());
+        box = new Box(BoxLayout.X_AXIS);
+        panel.add(BorderLayout.EAST,box);
+        add(BorderLayout.CENTER,panel);
 
-		MouseHandler mouseHandler = new MouseHandler();
+        MouseHandler mouseHandler = new MouseHandler();
 
-		caretStatus = new ToolTipLabel();
-		caretStatus.setName("caretStatus");
-		caretStatus.setToolTipText(jEdit.getProperty("view.status.caret-tooltip"));
-		caretStatus.addMouseListener(mouseHandler);
+        caretStatus = new ToolTipLabel();
+        caretStatus.setName("caretStatus");
+        caretStatus.setToolTipText(jEdit.getProperty("view.status.caret-tooltip"));
+        caretStatus.addMouseListener(mouseHandler);
 
-		message = new JLabel(" ");
-		setMessageComponent(message);
+        message = new JLabel(" ");
+        setMessageComponent(message);
 
-		modeWidget = _getWidget("mode");
-		foldWidget = _getWidget("fold");
-		encodingWidget = _getWidget("encoding");
-		wrapWidget = _getWidget("wrap");
-		indentWidget = _getWidget("indent");
-		multiSelectWidget = _getWidget("multiSelect");
-		rectSelectWidget = _getWidget("rectSelect");
-		overwriteWidget = _getWidget("overwrite");
-		lineSepWidget = _getWidget("lineSep");
-		lockedWidget = _getWidget("locked");
+        modeWidget = _getWidget("mode");
+        foldWidget = _getWidget("fold");
+        encodingWidget = _getWidget("encoding");
+        wrapWidget = _getWidget("wrap");
+        indentWidget = _getWidget("indent");
+        multiSelectWidget = _getWidget("multiSelect");
+        rectSelectWidget = _getWidget("rectSelect");
+        overwriteWidget = _getWidget("overwrite");
+        lineSepWidget = _getWidget("lineSep");
+        lockedWidget = _getWidget("locked");
 
-		taskHandler = new TaskHandler();
-	} //}}}
+        taskHandler = new TaskHandler();
+    } //}}}
 
-	//{{{ propertiesChanged() method
-	public void propertiesChanged()
-	{
-		Color fg = jEdit.getColorProperty("view.status.foreground");
-		Color bg = jEdit.getColorProperty("view.status.background");
+    //{{{ propertiesChanged() method
+    public void propertiesChanged()
+    {
+        Color fg = jEdit.getColorProperty("view.status.foreground");
+        Color bg = jEdit.getColorProperty("view.status.background");
 
-		showCaretStatus = jEdit.getBooleanProperty("view.status.show-caret-status");
+        showCaretStatus = jEdit.getBooleanProperty("view.status.show-caret-status");
 
-		panel.setBackground(bg);
-		panel.setForeground(fg);
-		caretStatus.setBackground(bg);
-		caretStatus.setForeground(fg);
-		message.setBackground(bg);
-		message.setForeground(fg);
+        panel.setBackground(bg);
+        panel.setForeground(fg);
+        caretStatus.setBackground(bg);
+        caretStatus.setForeground(fg);
+        message.setBackground(bg);
+        message.setForeground(fg);
 
-		// retarded GTK look and feel!
-		Font font = new JLabel().getFont();
-		//UIManager.getFont("Label.font");
-		FontMetrics fm = getFontMetrics(font);
+        // retarded GTK look and feel!
+        Font font = new JLabel().getFont();
+        //UIManager.getFont("Label.font");
+        FontMetrics fm = getFontMetrics(font);
 
-		if (showCaretStatus)
-		{
-			panel.add(BorderLayout.WEST,caretStatus);
+        if (showCaretStatus)
+        {
+            panel.add(BorderLayout.WEST,caretStatus);
 
-			caretStatus.setFont(font);
+            caretStatus.setFont(font);
 
-			Dimension dim = new Dimension(fm.stringWidth(caretTestStr),
-					fm.getHeight());
-			caretStatus.setPreferredSize(dim);
-			updateCaretStatus();
-		}
-		else
-			panel.remove(caretStatus);
+            Dimension dim = new Dimension(fm.stringWidth(caretTestStr),
+                    fm.getHeight());
+            caretStatus.setPreferredSize(dim);
+            updateCaretStatus();
+        }
+        else
+            panel.remove(caretStatus);
 
-		String statusBar = jEdit.getProperty("view.status");
-		if (!Objects.equals(currentBar, statusBar))
-		{
-			box.removeAll();
-			StringTokenizer tokenizer = new StringTokenizer(statusBar);
-			while (tokenizer.hasMoreTokens())
-			{
-				String token = tokenizer.nextToken();
-				if (Character.isLetter(token.charAt(0)))
-				{
-					Widget widget = getWidget(token);
-					if (widget == null)
-					{
-						JLabel label = new JLabel(token);
-						label.setBackground(bg);
-						label.setForeground(fg);
-						box.add(label);
-						continue;
-					}
-					Component c = widget.getComponent();
-					c.setBackground(bg);
-					c.setForeground(fg);
-					box.add(c);
-					widget.update();
-					widget.propertiesChanged();
-				}
-				else
-				{
-					JLabel label = new JLabel(token);
-					label.setBackground(bg);
-					label.setForeground(fg);
-					box.add(label);
-				}
-			}
-			currentBar = statusBar;
-		}
-		updateBufferStatus();
-		updateMiscStatus();
-	} //}}}
+        String statusBar = jEdit.getProperty("view.status");
+        if (!Objects.equals(currentBar, statusBar))
+        {
+            box.removeAll();
+            StringTokenizer tokenizer = new StringTokenizer(statusBar);
+            while (tokenizer.hasMoreTokens())
+            {
+                String token = tokenizer.nextToken();
+                if (Character.isLetter(token.charAt(0)))
+                {
+                    Widget widget = getWidget(token);
+                    if (widget == null)
+                    {
+                        JLabel label = new JLabel(token);
+                        label.setBackground(bg);
+                        label.setForeground(fg);
+                        box.add(label);
+                        continue;
+                    }
+                    Component c = widget.getComponent();
+                    c.setBackground(bg);
+                    c.setForeground(fg);
+                    box.add(c);
+                    widget.update();
+                    widget.propertiesChanged();
+                }
+                else
+                {
+                    JLabel label = new JLabel(token);
+                    label.setBackground(bg);
+                    label.setForeground(fg);
+                    box.add(label);
+                }
+            }
+            currentBar = statusBar;
+        }
+        updateBufferStatus();
+        updateMiscStatus();
+    } //}}}
 
-	//{{{ addNotify() method
-	@Override
-	public void addNotify()
-	{
-		super.addNotify();
-		TaskManager.instance.addTaskListener(taskHandler);
-	} //}}}
+    //{{{ addNotify() method
+    @Override
+    public void addNotify()
+    {
+        super.addNotify();
+        TaskManager.instance.addTaskListener(taskHandler);
+    } //}}}
 
-	//{{{ removeNotify() method
-	@Override
-	public void removeNotify()
-	{
-		super.removeNotify();
-		TaskManager.instance.removeTaskListener(taskHandler);
-	} //}}}
+    //{{{ removeNotify() method
+    @Override
+    public void removeNotify()
+    {
+        super.removeNotify();
+        TaskManager.instance.removeTaskListener(taskHandler);
+    } //}}}
 
-	//{{{ TaskListener implementation
-	private class TaskHandler implements TaskListener
-	{
-		private final Runnable statusLineIo = new Runnable()
-		{
-			public void run()
-			{
-				// don't obscure existing message
-				if(!currentMessageIsIO && message != null && !"".equals(message.getText().trim()))
-					return;
+    //{{{ TaskListener implementation
+    private class TaskHandler implements TaskListener
+    {
+        private final Runnable statusLineIo = new Runnable()
+        {
+            public void run()
+            {
+                // don't obscure existing message
+                if(!currentMessageIsIO && message != null && !"".equals(message.getText().trim()))
+                    return;
 
-				int requestCount = TaskManager.instance.countIoTasks();
-				if(requestCount == 0)
-				{
-					setMessageAndClear(jEdit.getProperty(
-						"view.status.io.done"));
-					currentMessageIsIO = true;
-				}
-				else if(requestCount == 1)
-				{
-					setMessage(jEdit.getProperty(
-						"view.status.io-1"));
-					currentMessageIsIO = true;
-				}
-				else
-				{
-					Object[] args = {requestCount};
-					setMessage(jEdit.getProperty(
-						"view.status.io",args));
-					currentMessageIsIO = true;
-				}
-			}
-		};
+                int requestCount = TaskManager.instance.countIoTasks();
+                if(requestCount == 0)
+                {
+                    setMessageAndClear(jEdit.getProperty(
+                            "view.status.io.done"));
+                    currentMessageIsIO = true;
+                }
+                else if(requestCount == 1)
+                {
+                    setMessage(jEdit.getProperty(
+                            "view.status.io-1"));
+                    currentMessageIsIO = true;
+                }
+                else
+                {
+                    Object[] args = {requestCount};
+                    setMessage(jEdit.getProperty(
+                            "view.status.io",args));
+                    currentMessageIsIO = true;
+                }
+            }
+        };
 
-		//{{{ waiting() method
-		public void waiting(Task task)
-		{
-			SwingUtilities.invokeLater(statusLineIo);
-		} //}}}
-	
-		//{{{ running() method
-		public void running(Task task)
-		{
-		} //}}}
-	
-		//{{{ done() method
-		public void done(Task task)
-		{
-			SwingUtilities.invokeLater(statusLineIo);
-		} //}}}
-	
-		//{{{ statusUpdate() method
-		public void statusUpdated(Task task)
-		{
-		} //}}}
+        //{{{ waiting() method
+        public void waiting(Task task)
+        {
+            SwingUtilities.invokeLater(statusLineIo);
+        } //}}}
 
-		//{{{ maximumUpdated() method
-		public void maximumUpdated(Task task)
-		{
-		} //}}}
+        //{{{ running() method
+        public void running(Task task)
+        {
+        } //}}}
 
-		//{{{ valueUpdated() method
-		public void valueUpdated(Task task)
-		{
-		} //}}}
-	} //}}}
+        //{{{ done() method
+        public void done(Task task)
+        {
+            SwingUtilities.invokeLater(statusLineIo);
+        } //}}}
 
-	//}}}
+        //{{{ statusUpdate() method
+        public void statusUpdated(Task task)
+        {
+        } //}}}
 
-	//{{{ getMessage() method
-	/**
-	 * Returns the current message.
-	 *
-	 * @return the current message
-	 * @since jEdit 4.4pre1
-	 */
-	public String getMessage()
-	{
-		return message.getText();
-	} //}}}
+        //{{{ maximumUpdated() method
+        public void maximumUpdated(Task task)
+        {
+        } //}}}
 
-	//{{{ setMessageAndClear() method
-	/**
-	 * Show a message for a short period of time.
-	 * @param message The message
-	 * @since jEdit 3.2pre5
-	 */
-	public void setMessageAndClear(String message)
-	{
-		setMessage(message);
+        //{{{ valueUpdated() method
+        public void valueUpdated(Task task)
+        {
+        } //}}}
+    } //}}}
 
-		tempTimer = new Timer(0,new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				// so if view is closed in the meantime...
-				if(isShowing())
-					setMessage(null);
-			}
-		});
+    //}}}
 
-		tempTimer.setInitialDelay(10000);
-		tempTimer.setRepeats(false);
-		tempTimer.start();
-	} //}}}
+    //{{{ getMessage() method
+    /**
+     * Returns the current message.
+     *
+     * @return the current message
+     * @since jEdit 4.4pre1
+     */
+    public String getMessage()
+    {
+        return message.getText();
+    } //}}}
 
-	//{{{ setMessage() method
-	/**
-	 * Displays a status message.
-	 * @param message the message to display, it can be null
-	 */
-	public void setMessage(String message)
-	{
-		if(tempTimer != null)
-		{
-			tempTimer.stop();
-			tempTimer = null;
-		}
+    //{{{ setMessageAndClear() method
+    /**
+     * Show a message for a short period of time.
+     * @param message The message
+     * @since jEdit 3.2pre5
+     */
+    public void setMessageAndClear(String message)
+    {
+        setMessage(message);
 
-		setMessageComponent(this.message);
+        tempTimer = new Timer(0,new ActionListener()
+        {
+            public void actionPerformed(ActionEvent evt)
+            {
+                // so if view is closed in the meantime...
+                if(isShowing())
+                    setMessage(null);
+            }
+        });
 
-		if(message == null)
-		{
-			if(view.getMacroRecorder() != null)
-				this.message.setText(jEdit.getProperty("view.status.recording"));
-			else
-				this.message.setText(" ");
-		}
-		else
-			this.message.setText(message);
-	} //}}}
+        tempTimer.setInitialDelay(10000);
+        tempTimer.setRepeats(false);
+        tempTimer.start();
+    } //}}}
 
-	//{{{ setMessageComponent() method
-	public void setMessageComponent(Component comp)
-	{
-		currentMessageIsIO = false;
+    //{{{ setMessage() method
+    /**
+     * Displays a status message.
+     * @param message the message to display, it can be null
+     */
+    public void setMessage(String message)
+    {
+        if(tempTimer != null)
+        {
+            tempTimer.stop();
+            tempTimer = null;
+        }
 
-		if (comp == null || messageComp == comp)
-		{
-			return;
-		}
+        setMessageComponent(this.message);
 
-		messageComp = comp;
-		panel.add(BorderLayout.CENTER, messageComp);
-	} //}}}
+        if(message == null)
+        {
+            if(view.getMacroRecorder() != null)
+                this.message.setText(jEdit.getProperty("view.status.recording"));
+            else
+                this.message.setText(" ");
+        }
+        else
+            this.message.setText(message);
+    } //}}}
 
-	//{{{ updateCaretStatus() method
-	/** Updates the status bar with information about the caret position, line number, etc */
-	
-	// Helper method to count words in a string
-	private int countWords(String text) {
-		// Use a regular expression to split the string into words
-		String[] words = text.split("\\s+");
-		return words.length;
-	}
-	
-	public void updateCaretStatus()
-	{
-		if (showCaretStatus)
-		{
-			Buffer buffer = view.getBuffer();
+    //{{{ setMessageComponent() method
+    public void setMessageComponent(Component comp)
+    {
+        currentMessageIsIO = false;
 
-			if(!buffer.isLoaded() ||
-				/* can happen when switching buffers sometimes */
-				buffer != view.getTextArea().getBuffer())
-			{
-				caretStatus.setText(" ");
-				return;
-			}
+        if (comp == null || messageComp == comp)
+        {
+            return;
+        }
 
-			JEditTextArea textArea = view.getTextArea();
+        messageComp = comp;
+        panel.add(BorderLayout.CENTER, messageComp);
+    } //}}}
 
-			int caretPosition = textArea.getCaretPosition();
-			int currLine = textArea.getCaretLine();
+    //{{{ updateCaretStatus() method
+    /** Updates the status bar with information about the caret position, line number, etc */
 
-			// there must be a better way of fixing this...
-			// the problem is that this method can sometimes
-			// be called as a result of a text area scroll
-			// event, in which case the caret position has
-			// not been updated yet.
-			if(currLine >= buffer.getLineCount())
-				return; // hopefully another caret update will come?
+    // Helper method to count words in a string
+    private int countWords(String text) {
+        // Use a regular expression to split the string into words
+        String[] words = text.split("\\s+");
+        return words.length;
+    }
 
-			int start = textArea.getLineStartOffset(currLine);
-			int dot = caretPosition - start;
+    public void updateCaretStatus() {
+        if (!showCaretStatus) {
+            return;
+        }
 
-			if(dot < 0)
-				return;
+        Buffer buffer = view.getBuffer();
+        if (!isValidBuffer(buffer)) {
+            caretStatus.setText(" ");
+            return;
+        }
 
-			int bufferLength = buffer.getLength();
+        JEditTextArea textArea = view.getTextArea();
+        int caretPosition = textArea.getCaretPosition();
+        int currLine = textArea.getCaretLine();
 
-			buffer.getText(start,dot,seg);
-			int virtualPosition = StandardUtilities.getVirtualWidth(seg,
-				buffer.getTabSize());
-			// for GC
-			seg.array = null;
-			seg.count = 0;
-			int totalWords = countWords(buffer.getText(0, bufferLength));
-			int wordOffset = countWords(buffer.getText(0, caretPosition));
-			
-			if (jEdit.getBooleanProperty("view.status.show-caret-linenumber", true))
-			{
-				buf.append(currLine + 1);
-				buf.append(',');
-			}
-			if (jEdit.getBooleanProperty("view.status.show-caret-dot", true))
-			{
-				buf.append(dot + 1);
-			}
-			if (jEdit.getBooleanProperty("view.status.show-caret-virtual", true) &&
-				virtualPosition != dot)
-			{
-				buf.append('-');
-				buf.append(virtualPosition + 1);
-			}
-			if (buf.length() > 0)
-			{
-				buf.append(' ');
-			}
-			if (jEdit.getBooleanProperty("view.status.show-caret-offset", true) &&
-				jEdit.getBooleanProperty("view.status.show-caret-bufferlength", true))
-			{
-				buf.append('(');
-				buf.append(caretPosition);
-				buf.append('/');
-				buf.append(bufferLength);
-				buf.append(')');
-			}
-			else if (jEdit.getBooleanProperty("view.status.show-caret-offset", true))
-			{
-				buf.append('(');
-				buf.append(caretPosition);
-				buf.append(')');
-			}
-			else if (jEdit.getBooleanProperty("view.status.show-caret-bufferlength", true))
-			{
-				buf.append('(');
-				buf.append(bufferLength);
-				buf.append(')');
-			}
-			
-			if (jEdit.getBooleanProperty("view.status.show-word-offset", true) &&
-					jEdit.getBooleanProperty("view.status.show-total-words", true)) {
-				buf.append('(');
-				buf.append(wordOffset);
-				buf.append('/');
-				buf.append(totalWords);
-				buf.append(')');
-			}
-			
-			caretStatus.setText(buf.toString());
-			buf.setLength(0);
-		}
-	} //}}}
+        if (!isValidCurrLine(currLine, buffer)) {
+            return;
+        }
 
-	//{{{ updateBufferStatus() method
-	public void updateBufferStatus()
-	{
-		wrapWidget.update();
-		indentWidget.update();
-		lineSepWidget.update();
-		modeWidget.update();
-		foldWidget.update();
-		encodingWidget.update();
-		lockedWidget.update();
-	} //}}}
+        int start = textArea.getLineStartOffset(currLine);
+        int dot = caretPosition - start;
 
-	//{{{ updateMiscStatus() method
-	public void updateMiscStatus()
-	{
-		multiSelectWidget.update();
-		rectSelectWidget.update();
-		overwriteWidget.update();
-	} //}}}
+        if (dot < 0) {
+            return;
+        }
 
-	//{{{ Private members
-	private String currentBar;
-	private final TaskHandler taskHandler;
-	private final View view;
-	private final JPanel panel;
-	private final Box box;
-	private final ToolTipLabel caretStatus;
-	private Component messageComp;
-	private final JLabel message;
-	private final Widget modeWidget;
-	private final Widget foldWidget;
-	private final Widget encodingWidget;
-	private final Widget wrapWidget;
-	private final Widget indentWidget;
-	private final Widget multiSelectWidget;
-	private final Widget rectSelectWidget;
-	private final Widget overwriteWidget;
-	private final Widget lineSepWidget;
-	private final Widget lockedWidget;
-	/* package-private for speed */ StringBuilder buf = new StringBuilder();
-	private Timer tempTimer;
-	private boolean currentMessageIsIO;
+        int bufferLength = buffer.getLength();
+        updateCaretStatusText(currLine, dot, buffer, bufferLength, caretPosition);
+    }
 
-	private final Segment seg = new Segment();
+    private boolean isValidBuffer(Buffer buffer) {
+        return buffer != null && buffer.isLoaded() && buffer == view.getTextArea().getBuffer();
+    }
 
-	private boolean showCaretStatus;
-	//}}}
+    private boolean isValidCurrLine(int currLine, Buffer buffer) {
+        return currLine >= 0 && currLine < buffer.getLineCount();
+    }
 
-	static final String caretTestStr = "9999,999-999 (99999999/99999999)";
+    private void updateCaretStatusText(int currLine, int dot, Buffer buffer, int bufferLength, int caretPosition) {
+        StringBuilder buf = new StringBuilder();
 
-	//{{{ getWidget() method
-	private Widget getWidget(String name)
-	{
-		if ("mode".equals(name))
-			return modeWidget;
-		if ("fold".equals(name))
-			return foldWidget;
-		if ("encoding".equals(name))
-			return encodingWidget;
-		if ("wrap".equals(name))
-			return wrapWidget;
-		if ("indent".equals(name))
-			return indentWidget;
-		if ("multiSelect".equals(name))
-			return multiSelectWidget;
-		if ("rectSelect".equals(name))
-			return rectSelectWidget;
-		if ("overwrite".equals(name))
-			return overwriteWidget;
-		if ("lineSep".equals(name))
-			return lineSepWidget;
-		if ("locked".equals(name))
-			return lockedWidget;
+        if (jEdit.getBooleanProperty("view.status.show-caret-linenumber", true)) {
+            buf.append(currLine + 1).append(',');
+        }
+        if (jEdit.getBooleanProperty("view.status.show-caret-dot", true)) {
+            buf.append(dot + 1);
+        }
 
-		return _getWidget(name);
-	} //}}}
+        int virtualPosition = getVirtualPosition(dot, buffer);
+        if (jEdit.getBooleanProperty("view.status.show-caret-virtual", true) && virtualPosition != dot) {
+            buf.append('-').append(virtualPosition + 1);
+        }
 
-	//{{{ _getWidget() method
-	private Widget _getWidget(String name)
-	{
-		StatusWidgetFactory widgetFactory =
-		(StatusWidgetFactory) ServiceManager.getService("org.gjt.sp.jedit.gui.statusbar.StatusWidgetFactory", name);
-		if (widgetFactory == null)
-		{
-			return null;
-		}
-		return widgetFactory.getWidget(view);
-	} //}}}
+        appendOffsetAndBufferLength(buf, caretPosition, bufferLength);
 
-	//{{{ MouseHandler class
-	private class MouseHandler extends MouseAdapter
-	{
-		@Override
-		public void mouseClicked(MouseEvent evt)
-		{
-			Object source = evt.getSource();
-			if(source == caretStatus && evt.getClickCount() == 2)
-			{
-				view.getTextArea().showGoToLineDialog();
-			}
-		}
-	} //}}}
+        caretStatus.setText(buf.toString());
+    }
+
+    private int getVirtualPosition(int dot, Buffer buffer) {
+        Segment seg = new Segment();
+        buffer.getText(buffer.getLineStartOffset(buffer.getLineOfOffset(dot)), dot, seg);
+        int virtualPosition = StandardUtilities.getVirtualWidth(seg, buffer.getTabSize());
+        seg.array = null; // for GC
+        seg.count = 0;
+        return virtualPosition;
+    }
+
+    private void appendOffsetAndBufferLength(StringBuilder buf, int caretPosition, int bufferLength) {
+        if (buf.length() > 0) {
+            buf.append(' ');
+        }
+
+        boolean showOffset = jEdit.getBooleanProperty("view.status.show-caret-offset", true);
+        boolean showBufferLength = jEdit.getBooleanProperty("view.status.show-caret-bufferlength", true);
+
+        if (showOffset || showBufferLength) {
+            buf.append('(');
+            if (showOffset) {
+                buf.append(caretPosition);
+                if (showBufferLength) {
+                    buf.append('/');
+                }
+            }
+            if (showBufferLength) {
+                buf.append(bufferLength);
+            }
+            buf.append(')');
+        }
+    }
+    //}}}
+
+    //{{{ updateBufferStatus() method
+    public void updateBufferStatus()
+    {
+        wrapWidget.update();
+        indentWidget.update();
+        lineSepWidget.update();
+        modeWidget.update();
+        foldWidget.update();
+        encodingWidget.update();
+        lockedWidget.update();
+    } //}}}
+
+    //{{{ updateMiscStatus() method
+    public void updateMiscStatus()
+    {
+        multiSelectWidget.update();
+        rectSelectWidget.update();
+        overwriteWidget.update();
+    } //}}}
+
+    //{{{ Private members
+    private String currentBar;
+    private final TaskHandler taskHandler;
+    private final View view;
+    private final JPanel panel;
+    private final Box box;
+    private final ToolTipLabel caretStatus;
+    private Component messageComp;
+    private final JLabel message;
+    private final Widget modeWidget;
+    private final Widget foldWidget;
+    private final Widget encodingWidget;
+    private final Widget wrapWidget;
+    private final Widget indentWidget;
+    private final Widget multiSelectWidget;
+    private final Widget rectSelectWidget;
+    private final Widget overwriteWidget;
+    private final Widget lineSepWidget;
+    private final Widget lockedWidget;
+    /* package-private for speed */ StringBuilder buf = new StringBuilder();
+    private Timer tempTimer;
+    private boolean currentMessageIsIO;
+
+    private final Segment seg = new Segment();
+
+    private boolean showCaretStatus;
+    //}}}
+
+    static final String caretTestStr = "9999,999-999 (99999999/99999999)";
+
+    //{{{ getWidget() method
+    private Widget getWidget(String name)
+    {
+        if ("mode".equals(name))
+            return modeWidget;
+        if ("fold".equals(name))
+            return foldWidget;
+        if ("encoding".equals(name))
+            return encodingWidget;
+        if ("wrap".equals(name))
+            return wrapWidget;
+        if ("indent".equals(name))
+            return indentWidget;
+        if ("multiSelect".equals(name))
+            return multiSelectWidget;
+        if ("rectSelect".equals(name))
+            return rectSelectWidget;
+        if ("overwrite".equals(name))
+            return overwriteWidget;
+        if ("lineSep".equals(name))
+            return lineSepWidget;
+        if ("locked".equals(name))
+            return lockedWidget;
+
+        return _getWidget(name);
+    } //}}}
+
+    //{{{ _getWidget() method
+    private Widget _getWidget(String name)
+    {
+        StatusWidgetFactory widgetFactory =
+                (StatusWidgetFactory) ServiceManager.getService("org.gjt.sp.jedit.gui.statusbar.StatusWidgetFactory", name);
+        if (widgetFactory == null)
+        {
+            return null;
+        }
+        return widgetFactory.getWidget(view);
+    } //}}}
+
+    //{{{ MouseHandler class
+    private class MouseHandler extends MouseAdapter
+    {
+        @Override
+        public void mouseClicked(MouseEvent evt)
+        {
+            Object source = evt.getSource();
+            if(source == caretStatus && evt.getClickCount() == 2)
+            {
+                view.getTextArea().showGoToLineDialog();
+            }
+        }
+    } //}}}
 }
+
